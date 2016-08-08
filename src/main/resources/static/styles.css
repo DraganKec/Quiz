@@ -1,0 +1,27 @@
+.container {
+	display: flex;
+	justify-content: center;
+}
+
+.container>div {
+	text-align: center;
+}
+
+.first {
+	width: 20px;
+}
+
+.black {
+	width: 20px;
+	border: 1px solid;
+	background-color: black;
+}
+
+.white {
+	width: 20px;
+	color: white;
+	border: 1px solid black;
+}
+.button {
+	width: 200px;
+}
