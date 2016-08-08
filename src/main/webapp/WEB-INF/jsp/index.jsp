@@ -11,7 +11,7 @@
 				Upisite svoje ime <input type="text" name="name" id="name">
 			</div>
 			<div class="button">
-				Izaberite kategoriju: <select name="kategory">
+				Izaberite kategoriju: <select name="category">
 					<option value="muzika">Muzika</option>
 					<option value="film">Film</option>
 					<option value="geografija">Geografija</option>

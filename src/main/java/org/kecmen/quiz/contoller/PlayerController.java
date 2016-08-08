@@ -16,12 +16,12 @@ public class PlayerController {
 	private PlayerService playerService;
 
 	@RequestMapping("/questions")
-	public String savePlayer(@RequestParam String name) {
+	public String savePlayer(@RequestParam String name, String category, int numberQuestions) {
 
 		Player player = new Player();
 		player.setName(name);
 
-		System.out.println(name);
+		System.out.println(name + " " + category + " " + numberQuestions);
 		playerService.savePlayer(player);
 
 		return "questions";
