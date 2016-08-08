@@ -6,5 +6,7 @@ public interface PlayerService {
 	
 	Player savePlayer(Player player);
 	
+	Iterable<Player> getAllPlayers();
+	
 	
 }

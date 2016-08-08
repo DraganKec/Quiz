@@ -22,4 +22,9 @@ public class PlayerImpl implements PlayerService {
 
 	}
 
+	@Override
+	public Iterable<Player> getAllPlayers() {
+		return playerRepository.findAll();
+	}
+
 }
