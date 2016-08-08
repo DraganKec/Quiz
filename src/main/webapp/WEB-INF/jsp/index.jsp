@@ -25,17 +25,11 @@
 				</select>
 			</div>
 			<div class="button">
-				<input type="submit" value="Pitanja" onclick="save()">
+				<input type="submit" value="Pitanja">
 			</div>
 		</div>
 	</form>
-	<script>
-		function save() {
-			var text = '{"player":[{"name":"Test","results":3 }]}';
 
-			player = JSON.parse(text);
-		}
-	</script>
 </body>
 
 </html>
