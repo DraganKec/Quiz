@@ -29,7 +29,10 @@
 			</div>
 		</div>
 	</form>
-
+	<br>
+	<form action="/allPlayers">
+		<input type="submit" value="Svi igraci">
+	</form>
 </body>
 
 </html>
