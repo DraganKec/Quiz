@@ -1,4 +1,6 @@
-package org.kecmen.quiz;
+package org.kecmen.quiz.model;
+
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,20 +12,20 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "questions")
+@Table(name = "players")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Questions {
-	
+public class Player {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
-	
-	private String category;
-	
-	private String question;
-	
-	private String answer;
+
+	private String name;
+
+	private int results;
+
+	private Date time;
 
 	public int getId() {
 		return id;
@@ -33,28 +35,28 @@ public class Questions {
 		this.id = id;
 	}
 
-	public String getCategory() {
-		return category;
+	public String getName() {
+		return name;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getQuestion() {
-		return question;
+	public int getResults() {
+		return results;
 	}
 
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setResults(int results) {
+		this.results = results;
 	}
 
-	public String getAnswer() {
-		return answer;
+	public Date getTime() {
+		return time;
 	}
 
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setTime(Date time) {
+		this.time = time;
 	}
 
 }

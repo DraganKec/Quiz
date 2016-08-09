@@ -1,9 +1,9 @@
-package org.kecmen.quiz.contoller;
+package org.kecmen.quiz.controller;
 
-import java.util.Map;
-
-import org.kecmen.quiz.Player;
+import org.kecmen.quiz.model.Player;
+import org.kecmen.quiz.model.Question;
 import org.kecmen.quiz.service.PlayerService;
+import org.kecmen.quiz.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,20 +15,21 @@ public class PlayerController {
 	@Autowired
 	private PlayerService playerService;
 
+	@Autowired
+	private QuestionService questionService;
+
 	@RequestMapping("/questions")
-	public String savePlayer(@RequestParam String name, String category, int numberQuestions) {
+	public String savePlayer(ModelMap model, @RequestParam String name, String category, int numberQuestions) {
+		
 
-		Player player = new Player();
-		player.setName(name);
+		model.addAttribute("questionList", questionService.findQuestionsByCategory(category));
 
-		System.out.println(name + " " + category + " " + numberQuestions);
-		playerService.savePlayer(player);
 
 		return "questions";
 	}
 
 	@RequestMapping("/allPlayers")
-	public String allPlayers(ModelMap model) {
+	public String allPlayers(ModelMap model, @RequestParam String category) {
 		model.addAttribute("allPlayers", playerService.getAllPlayers());
 		return "AllPlayers";
 	}

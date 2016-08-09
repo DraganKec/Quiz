@@ -12,9 +12,9 @@
 			</div>
 			<div class="button">
 				Izaberite kategoriju: <select name="category">
-					<option value="muzika">Muzika</option>
-					<option value="film">Film</option>
-					<option value="geografija">Geografija</option>
+					<option value="Muzika">Muzika</option>
+					<option value="Film">Film</option>
+					<option value="Geografija">Geografija</option>
 				</select>
 			</div>
 			<div class="button">
