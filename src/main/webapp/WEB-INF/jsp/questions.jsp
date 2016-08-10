@@ -8,13 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<c:forEach var="question" items="${questionList}">
-		<td>${question.id }</td>
-		<td>${question.category }</td>
-		<td>${question.question }</td>
-		<td>${question.answer }</td>
-		<td>${question.correctAnswer }</td>
-	</c:forEach>
+	<form action="/anotherQuestions">
+		<br>
+		<h1>${title}</h1>
+		<br>
+		<table>
+			<c:forEach var="question" items="${questionList}">
+				<td><input type="submit" value="${question.answer }"></td>
+			</c:forEach>
+		</table>
+	</form>
 </body>
 </html>
