@@ -1,4 +1,4 @@
-package org.kecmen.quiz.implementation;
+package org.kecmen.quiz.service.impl;
 
 import javax.annotation.Resource;
 
@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional
-public class PlayerServiceImplementation implements PlayerService {
+public class PlayerServiceImpl implements PlayerService {
 
 	@Resource
 	PlayerRepository playerRepository;

@@ -1,4 +1,4 @@
-package org.kecmen.quiz.implementation;
+package org.kecmen.quiz.service.impl;
 
 import javax.annotation.Resource;
 
@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional
-public class QuestionsServiceImplementation implements QuestionService {
+public class QuestionsServiceImpl implements QuestionService {
 
 	@Resource
 	private QuestionRepository questionRepository;
@@ -27,12 +27,17 @@ public class QuestionsServiceImplementation implements QuestionService {
 
 	@Override
 	public Iterable<Question> findQuestionsByCategory(String category) {
-		return questionRepository.findByCategory(category);
+		return questionRepository.getAllByCategory(category);
 	}
 
 	@Override
 	public Iterable<Question> findQuestion(String question) {
-		return questionRepository.findByQuestion(question);
+		return questionRepository.getAllByCategory(question);
+	}
+
+	@Override
+	public Question findQuestionById(int id) {
+		return questionRepository.findOne(id);
 	}
 
 }

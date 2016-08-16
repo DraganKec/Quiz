@@ -1,10 +1,8 @@
 package org.kecmen.quiz.controller;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpSession;
-
-import org.kecmen.quiz.model.Question;
+import org.kecmen.quiz.logic.QuestionLogic;
+import org.kecmen.quiz.service.AnswersService;
 import org.kecmen.quiz.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,24 +13,23 @@ import org.springframework.web.bind.annotation.*;
 public class PlayerController {
 
 	@Autowired
-	private PlayerService playerService;
+	private QuestionLogic questionLogic;
+	
+	@Autowired
+	private AnswersService answersService;
 
 	@Autowired
-	private QuestionLogic questionLogic;
+	private PlayerService playerService;
 
 	@RequestMapping("/questions")
 	public String savePlayer(HttpSession session, ModelMap model, @RequestParam String name, String category,
 			int numberQuestions) {
 
-		
 		questionLogic.setCategory(category);
-		questionLogic.setNumberQuestions(numberQuestions);
+		questionLogic.setQuestion();
 
-		ArrayList<Question> questionList = questionLogic.getQuestion();
-
-		model.addAttribute("title", questionList.get(0).getQuestion());
-		model.addAttribute("questionList", questionList);
-
+		model.addAttribute("title",questionLogic.getQuestion().getQuestion());
+		model.addAttribute("questionList",answersService.getAnswer(questionLogic.getQuestion().getQuestionid()));
 		return "questions";
 	}
 

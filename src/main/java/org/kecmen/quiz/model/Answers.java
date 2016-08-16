@@ -10,18 +10,29 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "questions")
+@Table(name = "answers")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Question {
+public class Answers {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "questionid")
+	@Column(name = "id")
+	private int id;
+
 	private int questionid;
 
-	private String category;
+	private String answer;
 
-	private String question;
+	@Column(name = "correct_answer")
+	private boolean correctAnswer;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getQuestionid() {
 		return questionid;
@@ -31,20 +42,21 @@ public class Question {
 		this.questionid = questionid;
 	}
 
-	public String getCategory() {
-		return category;
+	public String getAnswer() {
+		return answer;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 
-	public String getQuestion() {
-		return question;
+	public boolean isCorrectAnswer() {
+		return correctAnswer;
 	}
 
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setCorrectAnswer(boolean correctAnswer) {
+		this.correctAnswer = correctAnswer;
 	}
-
+	
+	
 }

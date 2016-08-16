@@ -13,10 +13,15 @@
 		<h1>${title}</h1>
 		<br>
 		<table>
+
 			<c:forEach var="question" items="${questionList}">
-				<td><input type="submit" value="${question.answer }"></td>
+				<tr>
+					<td><input type="submit" value="${question.answer }"></td>
+				</tr>
 			</c:forEach>
 		</table>
+<input type="submit" value="sdfsdfsdf">
+		<h4>Session: ${session}</h4>
 	</form>
 </body>
 </html>
