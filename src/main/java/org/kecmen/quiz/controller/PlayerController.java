@@ -16,6 +16,9 @@ public class PlayerController {
 	private QuestionLogic questionLogic;
 	
 	@Autowired
+	private QuestionsController questionsController;
+	
+	@Autowired
 	private AnswersService answersService;
 
 	@Autowired
@@ -24,9 +27,11 @@ public class PlayerController {
 	@RequestMapping("/questions")
 	public String savePlayer(HttpSession session, ModelMap model, @RequestParam String name, String category,
 			int numberQuestions) {
-
+		
+		questionsController.setNumberOfQuestion(numberQuestions);		
 		questionLogic.setCategory(category);
-		questionLogic.setQuestion();
+		
+		questionLogic.setQuestion();		
 
 		model.addAttribute("title",questionLogic.getQuestion().getQuestion());
 		model.addAttribute("questionList",answersService.getAnswer(questionLogic.getQuestion().getQuestionid()));
