@@ -7,6 +7,6 @@
 <title>Rezultati</title>
 </head>
 <body>
-Results
+Rezultat: ${results }
 </body>
 </html>

@@ -20,4 +20,9 @@ public class AnswersServiceImpl implements AnswersService {
 		return answerReposiroty.getAllByQuestionid(questionid);
 	}
 
+	@Override
+	public Answers getAnswer(String playersAnswer) {
+		return answerReposiroty.getByAnswer(playersAnswer);
+	}
+
 }

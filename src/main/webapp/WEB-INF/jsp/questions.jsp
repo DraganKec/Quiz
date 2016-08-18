@@ -16,7 +16,7 @@
 
 			<c:forEach var="question" items="${questionList}">
 				<tr>
-					<td><input type="submit" value="${question.answer }"></td>
+					<td><input type="submit" value="${question.answer }" name="playersAnswer"></td>
 				</tr>
 			</c:forEach>
 		</table>
