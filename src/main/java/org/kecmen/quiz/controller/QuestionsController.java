@@ -53,12 +53,14 @@ public class QuestionsController {
 
 		if (numberOfQuestion == 0) {
 
-			if (playerService.getPlayerByName(playerName) != null) {
-				player.setId(playerService.getPlayerByName(playerName).getId());
+			Player existingPlayer = playerService.getPlayerByName(playerName);
+
+			if (existingPlayer != null) {
+				player.setId(existingPlayer.getId());
 			}
 			player.setName(playerName);
 			player.setResults(results);
-			
+
 			playerService.savePlayer(player);
 			results = 0;
 			return "results";
