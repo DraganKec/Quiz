@@ -2,6 +2,7 @@ package org.kecmen.quiz.controller;
 
 import javax.servlet.http.HttpSession;
 import org.kecmen.quiz.logic.QuestionLogic;
+import org.kecmen.quiz.model.Player;
 import org.kecmen.quiz.service.AnswersService;
 import org.kecmen.quiz.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,10 @@ public class PlayerController {
 
 	@Autowired
 	private QuestionLogic questionLogic;
-	
+
 	@Autowired
 	private QuestionsController questionsController;
-	
+
 	@Autowired
 	private AnswersService answersService;
 
@@ -28,13 +29,15 @@ public class PlayerController {
 	public String savePlayer(HttpSession session, ModelMap model, @RequestParam String name, String category,
 			int numberQuestions) {
 		
-		questionsController.setNumberOfQuestion(numberQuestions);		
-		questionLogic.setCategory(category);
+		questionsController.setPlayerName(name);
 		
-		questionLogic.setQuestion();		
+		questionsController.setNumberOfQuestion(numberQuestions);
+		questionLogic.setCategory(category);
 
-		model.addAttribute("title",questionLogic.getQuestion().getQuestion());
-		model.addAttribute("questionList",answersService.getAnswer(questionLogic.getQuestion().getQuestionid()));
+		questionLogic.setQuestion();
+
+		model.addAttribute("title", questionLogic.getQuestion().getQuestion());
+		model.addAttribute("questionList", answersService.getAnswer(questionLogic.getQuestion().getQuestionid()));
 		return "questions";
 	}
 

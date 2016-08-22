@@ -20,8 +20,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-<input type="submit" value="sdfsdfsdf">
-		<h4>Session: ${session}</h4>
 	</form>
 </body>
 </html>
