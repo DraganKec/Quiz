@@ -48,6 +48,7 @@ public class QuestionsController {
 		model.addAttribute("results", results);
 		model.addAttribute("title", questionLogic.getQuestion().getQuestion());
 		model.addAttribute("questionList", answersService.getAnswer(questionLogic.getQuestion().getQuestionid()));
+		model.addAttribute("player", playerName);
 
 		numberOfQuestion--;
 

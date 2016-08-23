@@ -7,7 +7,7 @@
 <title>Rezultati</title>
 </head>
 <body>
-	<h2>Rezultat: ${results }</h2>
+	<h2>Igrac ${player} je imao tacnih odgovora ${results }</h2>
 	<form action="/">
 		<input type="submit" value="Pocetak">
 	</form>
