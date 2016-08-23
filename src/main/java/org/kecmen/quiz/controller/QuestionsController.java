@@ -43,15 +43,7 @@ public class QuestionsController {
 		if (answersService.getAnswer(playersAnswer).isCorrectAnswer()) {
 			results++;
 		}
-
-		questionLogic.setQuestion();
-		model.addAttribute("results", results);
-		model.addAttribute("title", questionLogic.getQuestion().getQuestion());
-		model.addAttribute("questionList", answersService.getAnswer(questionLogic.getQuestion().getQuestionid()));
-		model.addAttribute("player", playerName);
-
 		numberOfQuestion--;
-
 		if (numberOfQuestion == 0) {
 
 			Player existingPlayer = playerService.getPlayerByName(playerName);
@@ -63,12 +55,18 @@ public class QuestionsController {
 			player.setResults(results);
 
 			playerService.savePlayer(player);
-			results = 0;
-			
 			model.addAttribute("askedquestion", questionLogic.getAskedQuestions());
-			
+			model.addAttribute("results", results);
+			model.addAttribute("player", playerName);
 			return "results";
 		}
+
+		questionLogic.setQuestion();
+
+		model.addAttribute("title", questionLogic.getQuestion().getQuestion());
+		model.addAttribute("questionList", answersService.getAnswer(questionLogic.getQuestion().getQuestionid()));
+
+		
 
 		return "questions";
 	}
@@ -79,6 +77,10 @@ public class QuestionsController {
 
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
+	}
+
+	public void setResults(int results) {
+		this.results = results;
 	}
 
 }

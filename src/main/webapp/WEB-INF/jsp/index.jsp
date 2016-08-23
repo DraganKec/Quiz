@@ -8,7 +8,7 @@
 	<form action="questions" method="post">
 		<div class="container">
 			<div class="button">
-				Upisite svoje ime <input type="text" name="name" id="name">
+				Upisite svoje ime <input type="text" name="playerName" id="playerName">
 			</div>
 			<div class="button">
 				Izaberite kategoriju: <select name="category">

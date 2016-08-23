@@ -15,8 +15,6 @@ public class QuestionLogic {
 
 	private ArrayList<Question> questionsList;
 
-	private String category;
-
 	private Question question;
 
 	private ArrayList<Question> askedQuestions = new ArrayList<Question>();
@@ -26,8 +24,6 @@ public class QuestionLogic {
 	public void setQuestion() {
 
 		boolean isEmpty = true;
-
-		questionsList = (ArrayList<Question>) questionService.findQuestionsByCategory(category);
 
 		do {
 			question = questionService
@@ -42,10 +38,6 @@ public class QuestionLogic {
 
 	public int getRandomNumber(int max) {
 		return random.nextInt(max) + 0;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
 	}
 
 	public boolean isAsked(Question question) {
@@ -69,6 +61,13 @@ public class QuestionLogic {
 	public ArrayList<Question> getAskedQuestions() {
 		return askedQuestions;
 	}
-	
+
+	public void setQuestionsList(ArrayList<Question> questionsList) {
+		this.questionsList = questionsList;
+	}
+
+	public void clearAskedQuestions() {
+		askedQuestions.clear();
+	}
 
 }
