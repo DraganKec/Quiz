@@ -64,6 +64,9 @@ public class QuestionsController {
 
 			playerService.savePlayer(player);
 			results = 0;
+			
+			model.addAttribute("askedquestion", questionLogic.getAskedQuestions());
+			
 			return "results";
 		}
 

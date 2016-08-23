@@ -19,7 +19,7 @@ public class QuestionLogic {
 
 	private Question question;
 
-	private ArrayList<Integer> askedQuestions = new ArrayList<Integer>();
+	private ArrayList<Question> askedQuestions = new ArrayList<Question>();
 
 	private Random random = new Random();
 
@@ -34,7 +34,7 @@ public class QuestionLogic {
 					.findQuestionById(questionsList.get(getRandomNumber(questionsList.size())).getQuestionid());
 			if (isAsked(question) == false) {
 				isEmpty = false;
-				askedQuestions.add(question.getQuestionid());
+				askedQuestions.add(question);
 			}
 
 		} while (isEmpty);
@@ -55,7 +55,7 @@ public class QuestionLogic {
 		}
 
 		for (int i = 0; i < askedQuestions.size(); i++) {
-			if (askedQuestions.get(i) == question.getQuestionid()) {
+			if (askedQuestions.get(i).getQuestionid() == question.getQuestionid()) {
 				return true;
 			}
 		}
@@ -65,5 +65,10 @@ public class QuestionLogic {
 	public Question getQuestion() {
 		return question;
 	}
+
+	public ArrayList<Question> getAskedQuestions() {
+		return askedQuestions;
+	}
+	
 
 }
