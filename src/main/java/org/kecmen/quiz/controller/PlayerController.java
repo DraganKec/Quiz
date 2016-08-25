@@ -2,6 +2,7 @@ package org.kecmen.quiz.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.kecmen.quiz.logic.QuestionLogic;
 import org.kecmen.quiz.model.Question;
@@ -24,7 +25,7 @@ public class PlayerController {
 
 	@Autowired
 	private AnswersService answersService;
-	
+
 	@Autowired
 	private QuestionService questionService;
 
@@ -32,13 +33,16 @@ public class PlayerController {
 	private PlayerService playerService;
 
 	@RequestMapping("/questions")
-	public String savePlayer(HttpSession session, ModelMap model, @RequestParam String playerName, String category,
-			int numberQuestions) {
-		
-		//Assigning a value
+	public String savePlayer(HttpSession session, HttpServletRequest request, ModelMap model,
+			@RequestParam String playerName, String category, int numberQuestions) {
+
+		request.getSession().invalidate();
+
+		// Assigning a value
 		questionsController.setResults(0);
-		questionLogic.clearAskedQuestions();;
-		questionsController.setPlayerName(playerName);		
+		questionLogic.clearAskedQuestions();
+		;
+		questionsController.setPlayerName(playerName);
 		questionsController.setNumberOfQuestion(numberQuestions);
 		questionLogic.setQuestionsList((ArrayList<Question>) questionService.findQuestionsByCategory(category));
 
@@ -46,7 +50,7 @@ public class PlayerController {
 
 		model.addAttribute("title", questionLogic.getQuestion().getQuestion());
 		model.addAttribute("questionList", answersService.getAnswer(questionLogic.getQuestion().getQuestionid()));
-		
+
 		return "questions";
 	}
 

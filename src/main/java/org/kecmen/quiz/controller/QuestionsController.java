@@ -43,6 +43,7 @@ public class QuestionsController {
 		if (answersService.getAnswer(playersAnswer).isCorrectAnswer()) {
 			results++;
 		}
+
 		numberOfQuestion--;
 		if (numberOfQuestion == 0) {
 
@@ -65,8 +66,6 @@ public class QuestionsController {
 
 		model.addAttribute("title", questionLogic.getQuestion().getQuestion());
 		model.addAttribute("questionList", answersService.getAnswer(questionLogic.getQuestion().getQuestionid()));
-
-		
 
 		return "questions";
 	}

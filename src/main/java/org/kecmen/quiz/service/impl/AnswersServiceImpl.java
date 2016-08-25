@@ -25,4 +25,9 @@ public class AnswersServiceImpl implements AnswersService {
 		return answerReposiroty.getByAnswer(playersAnswer);
 	}
 
+	@Override
+	public String findTrueQuestion(int questionid) {
+		return answerReposiroty.findBycorrectAnswer(questionid);
+	}
+
 }
