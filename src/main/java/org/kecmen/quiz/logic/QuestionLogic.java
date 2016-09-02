@@ -2,7 +2,10 @@ package org.kecmen.quiz.logic;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import org.kecmen.quiz.model.Answers;
 import org.kecmen.quiz.model.Question;
+import org.kecmen.quiz.service.AnswersService;
 import org.kecmen.quiz.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,10 +15,15 @@ public class QuestionLogic {
 
 	@Autowired
 	private QuestionService questionService;
+	
+	@Autowired
+	private AnswersService answersService;
 
 	private ArrayList<Question> questionsList;
 
 	private Question question;
+	
+	private ArrayList<Answers> answers;
 
 	private ArrayList<Question> askedQuestions = new ArrayList<Question>();
 
@@ -31,6 +39,7 @@ public class QuestionLogic {
 			if (isAsked(question) == false) {
 				isEmpty = false;
 				askedQuestions.add(question);
+				answers.add(answersService.findTrueQuestion(question.getQuestionid()));
 			}
 
 		} while (isEmpty);

@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -19,7 +22,9 @@ public class Answers {
 	@Column(name = "id")
 	private int id;
 
-	private int questionid;
+	@ManyToOne
+    @JoinColumn(name = "questionid")
+	private Question questionid;
 
 	private String answer;
 
@@ -32,14 +37,6 @@ public class Answers {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getQuestionid() {
-		return questionid;
-	}
-
-	public void setQuestionid(int questionid) {
-		this.questionid = questionid;
 	}
 
 	public String getAnswer() {
@@ -56,6 +53,14 @@ public class Answers {
 
 	public void setCorrectAnswer(boolean correctAnswer) {
 		this.correctAnswer = correctAnswer;
+	}
+
+	public Question getQuestion() {
+		return questionid;
+	}
+
+	public void setQuestion(Question question) {
+		this.questionid = question;
 	}
 	
 	

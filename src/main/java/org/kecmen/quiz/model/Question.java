@@ -1,11 +1,7 @@
 package org.kecmen.quiz.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Set;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -22,6 +18,9 @@ public class Question {
 	private String category;
 
 	private String question;
+	
+	@OneToMany(mappedBy = "questionid", cascade = CascadeType.ALL)
+	private Set<Answers> answers;
 
 	public int getQuestionid() {
 		return questionid;
@@ -45,6 +44,14 @@ public class Question {
 
 	public void setQuestion(String question) {
 		this.question = question;
+	}
+
+	public Set<Answers> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(Set<Answers> answers) {
+		this.answers = answers;
 	}
 
 }

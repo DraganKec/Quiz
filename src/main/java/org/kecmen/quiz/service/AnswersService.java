@@ -8,5 +8,5 @@ public interface AnswersService {
 	
 	Answers getAnswer (String answer);
 	
-	String findTrueQuestion(int questionid);
+	Answers findTrueQuestion(int questionid);
 }
