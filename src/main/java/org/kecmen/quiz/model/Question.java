@@ -15,10 +15,12 @@ public class Question {
 	@Column(name = "questionid")
 	private int questionid;
 
-	private String category;
+	@ManyToOne
+    @JoinColumn(name = "categoryid")
+	private Category category;
 
 	private String question;
-	
+
 	@OneToMany(mappedBy = "questionid", cascade = CascadeType.ALL)
 	private Set<Answers> answers;
 
@@ -30,11 +32,12 @@ public class Question {
 		this.questionid = questionid;
 	}
 
-	public String getCategory() {
+	
+	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 

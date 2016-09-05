@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `Quiz`.`players` (
   
   CREATE TABLE IF NOT EXISTS `Quiz`.`questions` (
   `questionid` INT(11) NOT NULL AUTO_INCREMENT,
-  `category` VARCHAR(10) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `categoryid` INT(11) NOT NULL DEFAULT 0,
   `question` VARCHAR(99) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   
   PRIMARY KEY (`questionid`))  
@@ -38,6 +38,16 @@ CREATE TABLE IF NOT EXISTS `Quiz`.`players` (
   `questionid` INT (11) NOT NULL DEFAULT 0,
   `answer` VARCHAR(99) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   `correct_answer` TINYINT(1) NULL DEFAULT false,
+  
+  PRIMARY KEY (`id`))  
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 3
+  DEFAULT CHARACTER SET = utf8
+  COLLATE = utf8_unicode_ci;
+  
+  CREATE TABLE IF NOT EXISTS `Quiz`.`category` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `category_name` VARCHAR(99) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   
   PRIMARY KEY (`id`))  
   ENGINE = InnoDB
