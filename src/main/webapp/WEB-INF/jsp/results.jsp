@@ -26,12 +26,14 @@ th, td {
 			<th>id</th>
 			<th>Kategorija</th>
 			<th>Pitanje</th>
+			<th>Odgovor</th>
 		</tr>
 			<c:forEach items="${askedquestion}" var="askedq">
 			<tr>
 				<td>${askedq.questionid}</td>
 				<td>${askedq.category.categoryName}</td>
 				<td>${askedq.question}</td>
+<%-- 				<td>${askedq.answers.id}</td> --%>
 				</tr>
 			</c:forEach>
 	</table>
