@@ -11,10 +11,10 @@
 				Upisite svoje ime <input type="text" name="playerName" id="playerName">
 			</div>
 			<div class="button">
-				Izaberite kategoriju: <select name="category">
-					<option value="Muzika">Muzika</option>
-					<option value="Film">Film</option>
-					<option value="Geografija">Geografija</option>
+				Izaberite kategoriju: <select name="categoryid">
+					<option value="1">Muzika</option>
+					<option value="2">Film</option>
+					<option value="3">Sport</option>
 				</select>
 			</div>
 			<div class="button">

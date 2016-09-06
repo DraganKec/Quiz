@@ -2,6 +2,7 @@ package org.kecmen.quiz.service.impl;
 
 import javax.annotation.Resource;
 
+import org.kecmen.quiz.model.Category;
 import org.kecmen.quiz.model.Question;
 import org.kecmen.quiz.repository.QuestionRepository;
 import org.kecmen.quiz.service.QuestionService;
@@ -16,23 +17,8 @@ public class QuestionsServiceImpl implements QuestionService {
 	private QuestionRepository questionRepository;
 
 	@Override
-	public Question saveQuestion(Question questions) {
-		return questionRepository.save(questions);
-	}
-
-	@Override
-	public Iterable<Question> getAllQuestions() {
-		return questionRepository.findAll();
-	}
-
-	@Override
-	public Iterable<Question> findQuestionsByCategory(String category) {
+	public Iterable<Question> findQuestionsByCategory(Category category) {
 		return questionRepository.getAllByCategory(category);
-	}
-
-	@Override
-	public Iterable<Question> findQuestion(String question) {
-		return questionRepository.getAllByCategory(question);
 	}
 
 	@Override

@@ -30,7 +30,7 @@ th, td {
 			<c:forEach items="${askedquestion}" var="askedq">
 			<tr>
 				<td>${askedq.questionid}</td>
-				<td>${askedq.category}</td>
+				<td>${askedq.category.categoryName}</td>
 				<td>${askedq.question}</td>
 				</tr>
 			</c:forEach>

@@ -65,7 +65,7 @@ public class QuestionsController {
 		questionLogic.setQuestion();
 
 		model.addAttribute("title", questionLogic.getQuestion().getQuestion());
-		model.addAttribute("questionList", answersService.getAnswer(questionLogic.getQuestion().getQuestionid()));
+		model.addAttribute("questionList", questionLogic.getQuestion().getAnswers());
 
 		return "questions";
 	}

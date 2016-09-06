@@ -1,7 +1,9 @@
 package org.kecmen.quiz.logic;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import org.kecmen.quiz.model.Answers;
 import org.kecmen.quiz.model.Question;
@@ -15,15 +17,15 @@ public class QuestionLogic {
 
 	@Autowired
 	private QuestionService questionService;
-	
+
 	@Autowired
 	private AnswersService answersService;
 
 	private ArrayList<Question> questionsList;
 
 	private Question question;
-	
-	private ArrayList<Answers> answers;
+
+	private ArrayList<Answers> answers = new ArrayList<Answers>();
 
 	private ArrayList<Question> askedQuestions = new ArrayList<Question>();
 
@@ -39,7 +41,7 @@ public class QuestionLogic {
 			if (isAsked(question) == false) {
 				isEmpty = false;
 				askedQuestions.add(question);
-				answers.add(answersService.findTrueQuestion(question.getQuestionid()));
+				addTrueAnswer(question);
 			}
 
 		} while (isEmpty);
@@ -77,6 +79,18 @@ public class QuestionLogic {
 
 	public void clearAskedQuestions() {
 		askedQuestions.clear();
+	}
+
+	public void addTrueAnswer(Question question) {
+
+		Set<Answers> questionAnswers = question.getAnswers();
+
+		for (Answers answersList : questionAnswers) {
+			if (answersList.isCorrectAnswer()) {
+				answers.add(answersService.getAnswerById(answersList.getId()));
+			}
+
+		}
 	}
 
 }
