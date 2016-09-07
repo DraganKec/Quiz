@@ -1,13 +1,8 @@
 package org.kecmen.quiz.logic;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-import java.util.Set;
-
-import org.kecmen.quiz.model.Answers;
-import org.kecmen.quiz.model.Question;
-import org.kecmen.quiz.service.AnswersService;
+import org.kecmen.quiz.model.*;
 import org.kecmen.quiz.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,16 +13,11 @@ public class QuestionLogic {
 	@Autowired
 	private QuestionService questionService;
 
-	@Autowired
-	private AnswersService answersService;
-
 	private ArrayList<Question> questionsList;
 
+	private ArrayList<QuestionAndAnswer> questionAndAnswerList;
+
 	private Question question;
-
-	private ArrayList<Answers> answers = new ArrayList<Answers>();
-
-	private ArrayList<Question> askedQuestions = new ArrayList<Question>();
 
 	private Random random = new Random();
 
@@ -38,27 +28,26 @@ public class QuestionLogic {
 		do {
 			question = questionService
 					.findQuestionById(questionsList.get(getRandomNumber(questionsList.size())).getQuestionid());
-			if (isAsked(question) == false) {
+			if (!isAsked(question)) {
 				isEmpty = false;
-				askedQuestions.add(question);
-				addTrueAnswer(question);
+
 			}
 
 		} while (isEmpty);
 	}
 
 	public int getRandomNumber(int max) {
-		return random.nextInt(max) + 0;
+		return random.nextInt(max);
 	}
 
 	public boolean isAsked(Question question) {
 
-		if (askedQuestions.isEmpty()) {
+		if (questionAndAnswerList.isEmpty()) {
 			return false;
 		}
 
-		for (int i = 0; i < askedQuestions.size(); i++) {
-			if (askedQuestions.get(i).getQuestionid() == question.getQuestionid()) {
+		for (QuestionAndAnswer qestionAndAnswer : questionAndAnswerList) {
+			if (qestionAndAnswer.getQuestionid() == question.getQuestionid()) {
 				return true;
 			}
 		}
@@ -69,28 +58,24 @@ public class QuestionLogic {
 		return question;
 	}
 
-	public ArrayList<Question> getAskedQuestions() {
-		return askedQuestions;
-	}
-
 	public void setQuestionsList(ArrayList<Question> questionsList) {
 		this.questionsList = questionsList;
 	}
 
-	public void clearAskedQuestions() {
-		askedQuestions.clear();
+	public void questionAndAnswerList() {
+		questionAndAnswerList.clear();
 	}
 
-	public void addTrueAnswer(Question question) {
+	public ArrayList<QuestionAndAnswer> getQuestionAndAnswerList() {
+		return questionAndAnswerList;
+	}
 
-		Set<Answers> questionAnswers = question.getAnswers();
+	public void addQuestionAndAnswer(QuestionAndAnswer questionAndAnswer) {
+		this.questionAndAnswerList.add(questionAndAnswer);
+	}
 
-		for (Answers answersList : questionAnswers) {
-			if (answersList.isCorrectAnswer()) {
-				answers.add(answersService.getAnswerById(answersList.getId()));
-			}
-
-		}
+	public void clearQuestionAndAnswerList() {
+		questionAndAnswerList.clear();
 	}
 
 }

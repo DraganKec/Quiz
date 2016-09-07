@@ -4,6 +4,7 @@ import java.util.Date;
 import javax.servlet.http.HttpSession;
 import org.kecmen.quiz.logic.QuestionLogic;
 import org.kecmen.quiz.model.Player;
+import org.kecmen.quiz.model.QuestionAndAnswer;
 import org.kecmen.quiz.service.AnswersService;
 import org.kecmen.quiz.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class QuestionsController {
 
 	private int numberOfQuestion;
 
+	private String isAnswersTrue;
+
 	private int results;
 
 	private String playerName;
@@ -38,11 +41,16 @@ public class QuestionsController {
 	private QuestionLogic questionLogic;
 
 	@RequestMapping("/anotherQuestions")
-	public String getQuestion(HttpSession session, ModelMap model, @RequestParam String playersAnswer) {
+	public String getQuestion(ModelMap model, @RequestParam String playersAnswer) {
+
+		isAnswersTrue = "Pogresan";
 
 		if (answersService.getAnswer(playersAnswer).isCorrectAnswer()) {
+			isAnswersTrue = "Tacan";
 			results++;
 		}
+
+		questionLogic.addQuestionAndAnswer(new QuestionAndAnswer(questionLogic.getQuestion().getQuestionid(), questionLogic.getQuestion().getQuestion(), answersService.findTrueAnswer(questionLogic.getQuestion().getQuestionid()).getAnswer(), isAnswersTrue));
 
 		numberOfQuestion--;
 		if (numberOfQuestion == 0) {
@@ -56,7 +64,8 @@ public class QuestionsController {
 			player.setResults(results);
 
 			playerService.savePlayer(player);
-			model.addAttribute("askedquestion", questionLogic.getAskedQuestions());
+			
+			model.addAttribute("askedquestion", questionLogic.getQuestionAndAnswerList());
 			model.addAttribute("results", results);
 			model.addAttribute("player", playerName);
 			return "results";

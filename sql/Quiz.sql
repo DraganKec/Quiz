@@ -7,10 +7,10 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema Quiz
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `Quiz` DEFAULT CHARACTER SET utf8 ;
-USE `Quiz` ;
+CREATE SCHEMA IF NOT EXISTS `quiz` DEFAULT CHARACTER SET utf8 ;
+USE `quiz` ;
 
-CREATE TABLE IF NOT EXISTS `Quiz`.`players` (
+CREATE TABLE IF NOT EXISTS `quiz`.`players` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   `results` INT(11) NULL DEFAULT 0,
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `Quiz`.`players` (
   DEFAULT CHARACTER SET = utf8
   COLLATE = utf8_unicode_ci; 
   
-  CREATE TABLE IF NOT EXISTS `Quiz`.`questions` (
+  CREATE TABLE IF NOT EXISTS `quiz`.`questions` (
   `questionid` INT(11) NOT NULL AUTO_INCREMENT,
   `categoryid` INT(11) NOT NULL DEFAULT 0,
   `question` VARCHAR(99) CHARACTER SET 'utf8' NULL DEFAULT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `Quiz`.`players` (
   DEFAULT CHARACTER SET = utf8
   COLLATE = utf8_unicode_ci; 
   
-  CREATE TABLE IF NOT EXISTS `Quiz`.`answers` (
+  CREATE TABLE IF NOT EXISTS `quiz`.`answers` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `questionid` INT (11) NOT NULL DEFAULT 0,
   `answer` VARCHAR(99) CHARACTER SET 'utf8' NULL DEFAULT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `Quiz`.`players` (
   DEFAULT CHARACTER SET = utf8
   COLLATE = utf8_unicode_ci;
   
-  CREATE TABLE IF NOT EXISTS `Quiz`.`category` (
+  CREATE TABLE IF NOT EXISTS `quiz`.`category` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `category_name` VARCHAR(99) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   

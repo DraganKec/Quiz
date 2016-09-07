@@ -11,7 +11,7 @@ public interface AnswersRepository extends CrudRepository<Answers, Integer> {
 
 	Answers getByAnswer(String answer);
 
-	@Query("SELECT answer FROM Answers where correctAnswer=true AND questionid= ?1")
-	Answers findBycorrectAnswer(Question question);
+	@Query("SELECT a FROM Answers a LEFT JOIN a.questionid q WHERE a.correctAnswer=true AND q.questionid= ?1")
+	Answers findBycorrectAnswer(int question);
 
 }

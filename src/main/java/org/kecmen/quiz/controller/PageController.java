@@ -4,8 +4,10 @@ package org.kecmen.quiz.controller;
 import java.util.ArrayList;
 import java.util.Set;
 
+import org.kecmen.quiz.logic.QuestionLogic;
 import org.kecmen.quiz.model.Answers;
 import org.kecmen.quiz.model.Question;
+import org.kecmen.quiz.model.QuestionAndAnswer;
 import org.kecmen.quiz.repository.AnswersRepository;
 import org.kecmen.quiz.repository.QuestionRepository;
 import org.kecmen.quiz.service.AnswersService;
@@ -20,6 +22,9 @@ public class PageController {
 	private QuestionRepository repository;
 	
 	@Autowired
+	private QuestionLogic questionLogic;
+	
+	@Autowired
 	private AnswersService service;
 	
 	private ArrayList<Answers> ans = new ArrayList<Answers>();
@@ -31,18 +36,18 @@ public class PageController {
 
 	@RequestMapping("/test")
 	public String test() {
-		Question qu = repository.findOne(3);
+		//Question qu = repository.findOne(3);
+		Question setans = questionLogic.getQuestion();
+		ArrayList<QuestionAndAnswer> qaa = questionLogic.getQuestionAndAnswerList();
 		
-		Set<Answers> answers = qu.getAnswers();
-		
-		Answers sd = service.getAnswerById(3);
+		Answers sd = service.findTrueAnswer(3);
 		ans.add(sd);
 		
-		for(Answers answers1: answers){
-			if (answers1.isCorrectAnswer()){
-				System.out.print(answers1.getAnswer());
+		for(QuestionAndAnswer answers1: qaa){
+//			if (answers1.isCorrectAnswer()){
+				System.out.println(answers1.getTrueAnswer());
 			}
-		}
+//		}
 			
 		return "index";
 	}

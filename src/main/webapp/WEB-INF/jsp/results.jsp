@@ -24,16 +24,16 @@ th, td {
 	<table>
 		<tr>
 			<th>id</th>
-			<th>Kategorija</th>
 			<th>Pitanje</th>
 			<th>Odgovor</th>
+			<th>True</th>
 		</tr>
 			<c:forEach items="${askedquestion}" var="askedq">
 			<tr>
-				<td>${askedq.questionid}</td>
-				<td>${askedq.category.categoryName}</td>
+				<td>${askedq.questionid}</td>				
 				<td>${askedq.question}</td>
-<%-- 				<td>${askedq.answers.id}</td> --%>
+				<td>${askedq.answer}</td>
+				<td>${askedq.trueAnswer}</td>
 				</tr>
 			</c:forEach>
 	</table>
