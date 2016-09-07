@@ -1,7 +1,6 @@
 package org.kecmen.quiz.controller;
 
 import java.util.Date;
-import javax.servlet.http.HttpSession;
 import org.kecmen.quiz.logic.QuestionLogic;
 import org.kecmen.quiz.model.Player;
 import org.kecmen.quiz.model.QuestionAndAnswer;
@@ -50,7 +49,9 @@ public class QuestionsController {
 			results++;
 		}
 
-		questionLogic.addQuestionAndAnswer(new QuestionAndAnswer(questionLogic.getQuestion().getQuestionid(), questionLogic.getQuestion().getQuestion(), answersService.findTrueAnswer(questionLogic.getQuestion().getQuestionid()).getAnswer(), isAnswersTrue));
+		questionLogic.addQuestionAndAnswer(new QuestionAndAnswer(questionLogic.getQuestion().getQuestionid(),
+				questionLogic.getQuestion().getQuestion(),
+				answersService.findTrueAnswer(questionLogic.getQuestion().getQuestionid()).getAnswer(), isAnswersTrue));
 
 		numberOfQuestion--;
 		if (numberOfQuestion == 0) {
@@ -64,7 +65,7 @@ public class QuestionsController {
 			player.setResults(results);
 
 			playerService.savePlayer(player);
-			
+
 			model.addAttribute("askedquestion", questionLogic.getQuestionAndAnswerList());
 			model.addAttribute("results", results);
 			model.addAttribute("player", playerName);

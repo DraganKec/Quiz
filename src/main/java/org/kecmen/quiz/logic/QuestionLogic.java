@@ -15,7 +15,7 @@ public class QuestionLogic {
 
 	private ArrayList<Question> questionsList;
 
-	private ArrayList<QuestionAndAnswer> questionAndAnswerList;
+	private ArrayList<QuestionAndAnswer> questionAndAnswerList = new ArrayList<QuestionAndAnswer>();
 
 	private Question question;
 
