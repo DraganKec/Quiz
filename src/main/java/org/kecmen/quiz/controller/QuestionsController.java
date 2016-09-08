@@ -49,9 +49,9 @@ public class QuestionsController {
 			results++;
 		}
 
-		questionLogic.addQuestionAndAnswer(new QuestionAndAnswer(questionLogic.getQuestion().getQuestionid(),
-				questionLogic.getQuestion().getQuestion(),
-				answersService.findTrueAnswer(questionLogic.getQuestion().getQuestionid()).getAnswer(), isAnswersTrue));
+		questionLogic.addQuestionAndAnswer(new QuestionAndAnswer(questionLogic.getQuestion().getQuestionid(), 
+				questionLogic.getQuestion().getQuestion(), 
+				answersService.findTrueAnswer(questionLogic.getQuestion().getQuestionid()).getAnswer(), playersAnswer));
 
 		numberOfQuestion--;
 		if (numberOfQuestion == 0) {

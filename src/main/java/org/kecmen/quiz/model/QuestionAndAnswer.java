@@ -1,17 +1,17 @@
 package org.kecmen.quiz.model;
 
 public class QuestionAndAnswer {
-
 	private int questionid;
 	private String question;
-	private String answer;
 	private String trueAnswer;
+	private String playerAnswer;
 
-	public QuestionAndAnswer(int questionid, String question, String answer, String trueAnswer) {
+	public QuestionAndAnswer(int questionid, String question, String trueAnswer, String playerAnswer) {
+		super();
 		this.questionid = questionid;
 		this.question = question;
-		this.answer = answer;
 		this.trueAnswer = trueAnswer;
+		this.playerAnswer = playerAnswer;
 	}
 
 	public int getQuestionid() {
@@ -30,20 +30,20 @@ public class QuestionAndAnswer {
 		this.question = question;
 	}
 
-	public String getAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
-
 	public String getTrueAnswer() {
 		return trueAnswer;
 	}
 
 	public void setTrueAnswer(String trueAnswer) {
 		this.trueAnswer = trueAnswer;
+	}
+
+	public String getPlayerAnswer() {
+		return playerAnswer;
+	}
+
+	public void setPlayerAnswer(String playerAnswer) {
+		this.playerAnswer = playerAnswer;
 	}
 
 }

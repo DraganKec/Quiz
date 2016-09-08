@@ -21,8 +21,8 @@ public class AnswersServiceImpl implements AnswersService {
 	}
 
 	@Override
-	public Answers findTrueAnswer(int question) {
-		return answerReposiroty.findBycorrectAnswer(question);
+	public Answers findTrueAnswer(int questionid) {
+		return answerReposiroty.findBycorrectAnswer(questionid);
 	}
 
 	@Override

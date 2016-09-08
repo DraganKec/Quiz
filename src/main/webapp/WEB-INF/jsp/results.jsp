@@ -25,15 +25,15 @@ th, td {
 		<tr>
 			<th>id</th>
 			<th>Pitanje</th>
-			<th>Odgovor</th>
-			<th>True</th>
+			<th>Tacan odgovor</th>
+			<th>VAs odgovor</th>
 		</tr>
 			<c:forEach items="${askedquestion}" var="askedq">
 			<tr>
 				<td>${askedq.questionid}</td>				
 				<td>${askedq.question}</td>
-				<td>${askedq.answer}</td>
 				<td>${askedq.trueAnswer}</td>
+				<td>${askedq.playerAnswer}</td>
 				</tr>
 			</c:forEach>
 	</table>

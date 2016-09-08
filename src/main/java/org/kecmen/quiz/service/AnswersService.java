@@ -8,5 +8,5 @@ public interface AnswersService {
 
 	Answers getAnswerById(int id);
 
-	Answers findTrueAnswer(int question);
+	Answers findTrueAnswer(int questionid);
 }

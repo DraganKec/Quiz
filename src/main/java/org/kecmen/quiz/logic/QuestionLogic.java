@@ -12,22 +12,17 @@ public class QuestionLogic {
 
 	@Autowired
 	private QuestionService questionService;
-
 	private ArrayList<Question> questionsList;
-
 	private ArrayList<QuestionAndAnswer> questionAndAnswerList = new ArrayList<QuestionAndAnswer>();
-
 	private Question question;
-
 	private Random random = new Random();
 
 	public void setQuestion() {
-
 		boolean isEmpty = true;
 
 		do {
-			question = questionService
-					.findQuestionById(questionsList.get(getRandomNumber(questionsList.size())).getQuestionid());
+			question = questionService.findQuestionById(questionsList
+					.get(getRandomNumber(questionsList.size())).getQuestionid());
 			if (!isAsked(question)) {
 				isEmpty = false;
 

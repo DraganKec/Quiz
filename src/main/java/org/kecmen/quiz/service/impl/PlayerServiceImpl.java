@@ -17,13 +17,7 @@ public class PlayerServiceImpl implements PlayerService {
 
 	@Override
 	public Player savePlayer(Player player) {
-		
 		return playerRepository.save(player);
-	}
-
-	@Override
-	public Iterable<Player> getAllPlayers() {
-		return playerRepository.findAll();
 	}
 
 	@Override
