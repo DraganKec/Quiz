@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `quiz`.`players` (
   DEFAULT CHARACTER SET = utf8
   COLLATE = utf8_unicode_ci; 
   
-  CREATE TABLE IF NOT EXISTS `quiz`.`answers` (
+  CREATE TABLE IF NOT EXISTS `quiz`.`answer` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `questionid` INT (11) NOT NULL DEFAULT 0,
   `answer` VARCHAR(99) CHARACTER SET 'utf8' NULL DEFAULT NULL,

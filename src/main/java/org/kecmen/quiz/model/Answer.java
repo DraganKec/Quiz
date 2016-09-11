@@ -4,9 +4,9 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "answers")
+@Table(name = "answer")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Answers {
+public class Answer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

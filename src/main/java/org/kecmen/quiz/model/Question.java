@@ -22,7 +22,7 @@ public class Question {
 	private String question;
 
 	@OneToMany(mappedBy = "questionid", cascade = CascadeType.ALL)
-	private Set<Answers> answers;
+	private Set<Answer> answer;
 
 	public int getQuestionid() {
 		return questionid;
@@ -49,12 +49,12 @@ public class Question {
 		this.question = question;
 	}
 
-	public Set<Answers> getAnswers() {
-		return answers;
+	public Set<Answer> getAnswer() {
+		return answer;
 	}
 
-	public void setAnswers(Set<Answers> answers) {
-		this.answers = answers;
+	public void setAnswer(Set<Answer> answer) {
+		this.answer = answer;
 	}
 
 }

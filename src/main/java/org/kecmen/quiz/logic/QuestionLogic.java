@@ -10,12 +10,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class QuestionLogic {
 
-	@Autowired
 	private QuestionService questionService;
 	private ArrayList<Question> questionsList;
 	private ArrayList<Question> askedQuestion = new ArrayList<Question>();
 	private Question question;
 	private Random random = new Random();
+	
+	@Autowired
+	public QuestionLogic(QuestionService questionService) {
+	    this.questionService = questionService;
+	}
 
 	public void setQuestion() {
 		boolean isEmpty = true;
