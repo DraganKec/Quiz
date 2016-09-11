@@ -24,16 +24,16 @@ th, td {
 	<table>
 		<tr>
 			<th>id</th>
-			<th>Pitanje</th>
-			<th>Tacan odgovor</th>
-			<th>VAs odgovor</th>
+			<th>Ime</th>
+			<th>Rezultati</th>
+			<th>Vrijeme</th>
 		</tr>
-			<c:forEach items="${askedquestion}" var="askedq">
+			<c:forEach items="${playerresults}" var="player">
 			<tr>
-				<td>${askedq.questionid}</td>				
-				<td>${askedq.question}</td>
-				<td>${askedq.trueAnswer}</td>
-				<td>${askedq.playerAnswer}</td>
+				<td>${player.id}</td>				
+				<td>${player.name}</td>
+				<td>${player.results}</td>
+				<td>${player.date}</td>
 				</tr>
 			</c:forEach>
 	</table>

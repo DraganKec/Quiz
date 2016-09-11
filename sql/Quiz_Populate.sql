@@ -30,9 +30,9 @@ INSERT INTO `quiz`.`answers` VALUES (14,4, "Nebojsa Glogovac", true );
 INSERT INTO `quiz`.`answers` VALUES (15,4, "Ckalja", false );
 INSERT INTO `quiz`.`answers` VALUES (16,4, "Danilo Lazovic", false );
 
-INSERT INTO `quiz`.`questions` VALUES (5,2,"Treći po redu Harry Potter nosi naziv" );
+INSERT INTO `quiz`.`questions` VALUES (5,2,"Treci po redu Harry Potter nosi naziv" );
 
-INSERT INTO `quiz`.`answers` VALUES (17,5, "Harry Potter i prodaja državnih tajni", false );
+INSERT INTO `quiz`.`answers` VALUES (17,5, "Harry Potter i prodaja drzavnih tajni", false );
 INSERT INTO `quiz`.`answers` VALUES (18,5, "Harry Potter i zatvorenik Azkabana", true );
 INSERT INTO `quiz`.`answers` VALUES (19,5, "Harry Potter i kamen mudraca", false );
 INSERT INTO `quiz`.`answers` VALUES (20,5, "Harry Potter i zezzzzza", false );
@@ -44,7 +44,7 @@ INSERT INTO `quiz`.`answers` VALUES (22,6, "Rogera Moorea", false );
 INSERT INTO `quiz`.`answers` VALUES (23,6, "Piercea Brosnana", false );
 INSERT INTO `quiz`.`answers` VALUES (24,6, "Daniel Craig", true );
 
-INSERT INTO `quiz`.`questions` VALUES (7,2,"U kojoj zemlji je rođen Arnold Schwarzenegger?");
+INSERT INTO `quiz`.`questions` VALUES (7,2,"U kojoj zemlji je rodjen Arnold Schwarzenegger?");
 
 INSERT INTO `quiz`.`answers` VALUES (25,7, "SAD", false );
 INSERT INTO `quiz`.`answers` VALUES (26,7, "Njemacka", false );
@@ -68,7 +68,7 @@ INSERT INTO `quiz`.`answers` VALUES (36,9, "Londonu", false );
 INSERT INTO `quiz`.`questions` VALUES (10,2,"Kako se zove nas glumac Glogovac");
 
 INSERT INTO `quiz`.`answers` VALUES (37,10, "Milan", false );
-INSERT INTO `quiz`.`answers` VALUES (38,10, "Stefan", false );
+INSERT INTO `quiz`.`answers` VALUES (38,10, "Stefano", false );
 INSERT INTO `quiz`.`answers` VALUES (39,10, "Marko", false );
 INSERT INTO `quiz`.`answers` VALUES (40,10, "Nebojsa", true );
 

@@ -1,9 +1,9 @@
 package org.kecmen.quiz.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.kecmen.quiz.logic.QuestionLogic;
 import org.kecmen.quiz.model.Player;
-import org.kecmen.quiz.model.QuestionAndAnswer;
 import org.kecmen.quiz.service.AnswersService;
 import org.kecmen.quiz.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +23,10 @@ public class QuestionsController {
 	@Autowired
 	private PlayerService playerService;
 
-	Date date = new Date();
 
 	private int numberOfQuestion;
 
-	private String isAnswersTrue;
-
-	private int results;
+	private int results;	
 
 	private String playerName;
 
@@ -41,42 +38,36 @@ public class QuestionsController {
 
 	@RequestMapping("/anotherQuestions")
 	public String getQuestion(ModelMap model, @RequestParam String playersAnswer) {
-
-		isAnswersTrue = "Pogresan";
-
+		
 		if (answersService.getAnswer(playersAnswer).isCorrectAnswer()) {
-			isAnswersTrue = "Tacan";
 			results++;
 		}
-
-		questionLogic.addQuestionAndAnswer(new QuestionAndAnswer(questionLogic.getQuestion().getQuestionid(), 
-				questionLogic.getQuestion().getQuestion(), 
-				answersService.findTrueAnswer(questionLogic.getQuestion().getQuestionid()).getAnswer(), playersAnswer));
-
+		
+		model.addAttribute("trueanswer", answersService.findTrueAnswer(questionLogic.getQuestion()
+				.getQuestionid()).getAnswer());
+		model.addAttribute("results", results);
+		model.addAttribute("player", playerName);
+		
 		numberOfQuestion--;
 		if (numberOfQuestion == 0) {
-
-			Player existingPlayer = playerService.getPlayerByName(playerName);
-
-			if (existingPlayer != null) {
-				player.setId(existingPlayer.getId());
-			}
+			
+			Date currentDate = new Date();
+			SimpleDateFormat sdf =  new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
 			player.setName(playerName);
 			player.setResults(results);
-
+			player.setDate(sdf.format(currentDate));
 			playerService.savePlayer(player);
 
-			model.addAttribute("askedquestion", questionLogic.getQuestionAndAnswerList());
-			model.addAttribute("results", results);
-			model.addAttribute("player", playerName);
+			model.addAttribute("playerresults", playerService.getPlayerByName(playerName));			
+			
 			return "results";
 		}
-
+		
 		questionLogic.setQuestion();
 
 		model.addAttribute("title", questionLogic.getQuestion().getQuestion());
-		model.addAttribute("questionList", questionLogic.getQuestion().getAnswers());
-
+		model.addAttribute("answersList", questionLogic.getQuestion().getAnswers());
 		return "questions";
 	}
 

@@ -30,18 +30,15 @@ public class PlayerController {
 
 		// Assigning a value
 		questionsController.setResults(0);
-		questionLogic.clearQuestionAndAnswerList();
-
 		questionsController.setPlayerName(playerName);
 		questionsController.setNumberOfQuestion(numberQuestions);
-
 		questionLogic.setQuestionsList((ArrayList<Question>) questionService
 				.findQuestionsByCategory(categoryService.findCategoryById(categoryid)));
 
 		questionLogic.setQuestion();
 	
 		model.addAttribute("title", questionLogic.getQuestion().getQuestion());
-		model.addAttribute("questionList", questionLogic.getQuestion().getAnswers());
+		model.addAttribute("answersList", questionLogic.getQuestion().getAnswers());
 
 		return "questions";
 	}

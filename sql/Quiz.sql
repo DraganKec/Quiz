@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `quiz`.`players` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   `results` INT(11) NULL DEFAULT 0,
-  `time` time (6) NULL DEFAULT 0,
+  `date` datetime (6) NULL ,
   
   PRIMARY KEY (`id`))  
   ENGINE = InnoDB

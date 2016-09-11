@@ -2,13 +2,10 @@ package org.kecmen.quiz.controller;
 
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import org.kecmen.quiz.logic.QuestionLogic;
 import org.kecmen.quiz.model.Answers;
 import org.kecmen.quiz.model.Question;
-import org.kecmen.quiz.model.QuestionAndAnswer;
-import org.kecmen.quiz.repository.AnswersRepository;
 import org.kecmen.quiz.repository.QuestionRepository;
 import org.kecmen.quiz.service.AnswersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,15 +35,14 @@ public class PageController {
 	public String test() {
 		//Question qu = repository.findOne(3);
 		Question setans = questionLogic.getQuestion();
-		ArrayList<QuestionAndAnswer> qaa = questionLogic.getQuestionAndAnswerList();
 		
 		Answers sd = service.findTrueAnswer(3);
 		ans.add(sd);
 		
-		for(QuestionAndAnswer answers1: qaa){
+//		for(QuestionAndAnswer answers1: qaa){
 //			if (answers1.isCorrectAnswer()){
-				System.out.println(answers1.getTrueAnswer());
-			}
+//				System.out.println(answers1.getTrueAnswer());
+//			}
 //		}
 			
 		return "index";

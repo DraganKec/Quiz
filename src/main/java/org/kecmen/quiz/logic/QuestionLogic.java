@@ -13,7 +13,7 @@ public class QuestionLogic {
 	@Autowired
 	private QuestionService questionService;
 	private ArrayList<Question> questionsList;
-	private ArrayList<QuestionAndAnswer> questionAndAnswerList = new ArrayList<QuestionAndAnswer>();
+	private ArrayList<Question> askedQuestion = new ArrayList<Question>();
 	private Question question;
 	private Random random = new Random();
 
@@ -21,12 +21,12 @@ public class QuestionLogic {
 		boolean isEmpty = true;
 
 		do {
-			question = questionService.findQuestionById(questionsList
-					.get(getRandomNumber(questionsList.size())).getQuestionid());
-			if (!isAsked(question)) {
+			question = questionService
+					.findQuestionById(questionsList.get(getRandomNumber(questionsList.size())).getQuestionid());
+			if (!isAsked(question)) {				
 				isEmpty = false;
-
-			}
+			}			
+			askedQuestion.add(question);
 
 		} while (isEmpty);
 	}
@@ -37,12 +37,12 @@ public class QuestionLogic {
 
 	public boolean isAsked(Question question) {
 
-		if (questionAndAnswerList.isEmpty()) {
+		if (askedQuestion.isEmpty()) {
 			return false;
 		}
 
-		for (QuestionAndAnswer qestionAndAnswer : questionAndAnswerList) {
-			if (qestionAndAnswer.getQuestionid() == question.getQuestionid()) {
+		for (Question asked : askedQuestion) {
+			if (asked.getQuestionid() == question.getQuestionid()) {
 				return true;
 			}
 		}
@@ -55,22 +55,6 @@ public class QuestionLogic {
 
 	public void setQuestionsList(ArrayList<Question> questionsList) {
 		this.questionsList = questionsList;
-	}
-
-	public void questionAndAnswerList() {
-		questionAndAnswerList.clear();
-	}
-
-	public ArrayList<QuestionAndAnswer> getQuestionAndAnswerList() {
-		return questionAndAnswerList;
-	}
-
-	public void addQuestionAndAnswer(QuestionAndAnswer questionAndAnswer) {
-		this.questionAndAnswerList.add(questionAndAnswer);
-	}
-
-	public void clearQuestionAndAnswerList() {
-		questionAndAnswerList.clear();
 	}
 
 }

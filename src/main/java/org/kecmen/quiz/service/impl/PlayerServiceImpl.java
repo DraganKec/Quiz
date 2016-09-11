@@ -21,7 +21,7 @@ public class PlayerServiceImpl implements PlayerService {
 	}
 
 	@Override
-	public Player getPlayerByName(String name) {
+	public Iterable<Player> getPlayerByName(String name) {
 		return playerRepository.findPlayerByName(name);
 	}
 

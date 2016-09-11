@@ -7,7 +7,7 @@ public interface PlayerService {
 	Player savePlayer(Player player);
 
 
-	Player getPlayerByName(String name);
+	Iterable<Player> getPlayerByName(String name);
 	
 	Player findPlayerById (int id);
 

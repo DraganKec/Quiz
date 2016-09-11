@@ -14,12 +14,18 @@
 		<br>
 		<table>
 
-			<c:forEach var="question" items="${questionList}">
+			<c:forEach var="answers" items="${answersList}">
 				<tr>
-					<td><input type="submit" value="${question.answer }" name="playersAnswer"></td>
+					<td><input type="submit" type="button"
+						value="${answers.answer }" onclick="myFunction();"
+						name="playersAnswer" /></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</form>
+<h1>Tacan odgovor: ${trueanswer }</h1>
+
+<h4>Rezultat: ${results }</h4>
+
 </body>
 </html>
