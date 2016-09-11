@@ -28,11 +28,11 @@ public class PlayerController {
 	}
 
 	@RequestMapping("/questions")
-	public String savePlayer(ModelMap model, @RequestParam String playerName, int categoryid, int numberOfQuestions) {
+	public String savePlayer(ModelMap model, @RequestParam String playerName, int categoryid, int numberQuestions) {
 
 		questionsController.setResults(0);
 		questionsController.setPlayerName(playerName);
-		questionsController.setNumberOfQuestion(numberOfQuestions);
+		questionsController.setNumberOfQuestion(numberQuestions);
 		questionLogic.setQuestionsList((ArrayList<Question>) questionService
 				.findQuestionsByCategory(categoryService.findCategoryById(categoryid)));
 
