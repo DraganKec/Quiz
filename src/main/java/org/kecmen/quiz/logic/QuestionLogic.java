@@ -15,10 +15,10 @@ public class QuestionLogic {
 	private ArrayList<Question> askedQuestion = new ArrayList<Question>();
 	private Question question;
 	private Random random = new Random();
-	
+
 	@Autowired
 	public QuestionLogic(QuestionService questionService) {
-	    this.questionService = questionService;
+		this.questionService = questionService;
 	}
 
 	public void setQuestion() {
@@ -27,10 +27,9 @@ public class QuestionLogic {
 		do {
 			question = questionService
 					.findQuestionById(questionsList.get(getRandomNumber(questionsList.size())).getQuestionid());
-			if (!isAsked(question)) {				
+			if (!isAsked(question)) {
 				isEmpty = false;
-			}			
-			
+			}
 
 		} while (isEmpty);
 		askedQuestion.add(question);
@@ -62,4 +61,7 @@ public class QuestionLogic {
 		this.questionsList = questionsList;
 	}
 
+	public void clearAskedQuestion() {
+		askedQuestion.clear();
+	}
 }

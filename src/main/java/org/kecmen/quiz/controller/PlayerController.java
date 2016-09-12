@@ -31,6 +31,7 @@ public class PlayerController {
 	public String savePlayer(ModelMap model, @RequestParam String playerName, int categoryid, int numberQuestions) {
 
 		questionsController.setResults(0);
+		questionLogic.clearAskedQuestion();
 		questionsController.setPlayerName(playerName);
 		questionsController.setNumberOfQuestion(numberQuestions);
 		questionLogic.setQuestionsList((ArrayList<Question>) questionService
