@@ -30,9 +30,10 @@ public class QuestionLogic {
 			if (!isAsked(question)) {				
 				isEmpty = false;
 			}			
-			askedQuestion.add(question);
+			
 
 		} while (isEmpty);
+		askedQuestion.add(question);
 	}
 
 	public int getRandomNumber(int max) {
